@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Pad</title>
+        <style>
+        *.unselectable {
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+        </style>
+    </head>
+    <body>
+        <span id="windowbar" style="position: fixed; left: 7px; top: 280px; border: 1px #777; background-color: #aaa; width: 300px; height: 20px; z-index: 255;">
+            <div id="windowtitle"
+                 class="unselectable"
+                 style="position: relative; top: 1px; left: 1.5px; height: 18px; border: 1px #777 inset; background-color: #eee; font-size: 12px;">
+                ===== =====
+            </div>
+        </span>
+            
+        <span id="toolbox" style="position: fixed; left: 7px; top: 10px; border: 1px #777 ridge; background-color: #ccc; width: 36px; height: 241.5px; z-index: 255;">
+            <div id="boldbox"
+                 class="unselectable"
+                 style="position: relative; top: 1px; left: 1.5px; height: 32px; width: 32px; border: 1px #777 inset; background-color: #eee;">
+                <img src="/padicons/font_bold_icon&amp;32.png" style="width: 32px; height: 32px;" alt="[Bold]" id="boldicon" />
+            </div>
+            <div id="italicbox"
+                 class="unselectable"
+                 style="position: relative; top: 2.5px; left: 1.5px; height: 32px; width: 32px; border: 1px #777 inset; background-color: #eee;">
+                <img src="/padicons/font_italic_icon&amp;32.png" style="width: 32px; height: 32px;" alt="[Italic]" id="italicicon" />
+            </div>
+            <div id="underlinebox"
+                 class="unselectable"
+                 style="position: relative; top: 3.5px; left: 1.5px; height: 32px; width: 32px; border: 1px #777 inset; background-color: #eee;">
+                <img src="/padicons/font_underline_icon&32.png" style="width: 32px; height: 32px;" alt="[Underline]" id="underlineicon" />
+            </div>
+            <div id="promotebox"
+                 class="unselectable"
+                 style="position: relative; top: 4.5px; left: 1.5px; height: 32px; width: 32px; border: 1px #777 inset; background-color: #eee;">
+                <img src="/padicons/arrow_top_icon&32.png" style="width: 32px; height: 32px;" alt="[Promote]" id="promoteicon" />
+            </div>
+            <div id="demotebox"
+                 class="unselectable"
+                 style="position: relative; top: 5.5px; left: 1.5px; height: 32px; width: 32px; border: 1px #777 inset; background-color: #eee;">
+                <img src="/padicons/arrow_bottom_icon&32.png" style="width: 32px; height: 32px;" alt="[Demote]" id="demoteicon" />
+            </div>
+            <div id="feedbox"
+                 class="unselectable"
+                 style="position: relative; top: 6.5px; left: 1.5px; height: 32px; width: 32px; border: 1px #777 inset; background-color: #eee;">
+                <img src="/padicons/rss_icon&32.png" style="width: 32px; height: 32px;" alt="[Feed]" id="feedicon" />
+            </div>
+            <div id="deletebox"
+                 class="unselectable"
+                 style="position: relative; top: 7px; left: 1.5px; height: 32px; width: 32px; border: 1px #777 inset; background-color: #eee;">
+                <img src="/padicons/delete_icon&32.png" style="width: 32px; height: 32px;" alt="[Delete]" id="deleteicon" />
+            </div>
+        </span>
+        
+        <span id="resizetool" style="position: fixed; left: 45px; top: 10px; border: 1px #777 ridge; background-color: #ccc; width: 36px; height: 36px; z-index: 255;">
+            <div id="resizebox"
+                 class="unselectable"
+                 style="position: relative; top: 1px; left: 1.5px; height: 32px; width: 32px; border: 1px #777 inset; background-color: #eee;">
+                <img src="/padicons/arrow_two_head_icon&32.png" style="width: 32px; height: 32px;" alt="[Resize]" id="resizeicon" />
+            </div>
+        </span>
+        
+        <div id="login" style="position: relative; left: 25%; top: 25%; width: 400px; height: 125px; border: double 4px #000; background-color: #fff; display: none;">
+            <form>
+            <div id="usernameLine">
+                <span class="unselectable"
+                      style="position: relative; margin-left: 10px;">
+                    User Name:
+                </span>
+                <span style="position: relative; margin-left: 20px;">
+                    <input id="login_username" type="email" size="20" maxlength="50" required="required"/>
+                </span>
+            </div>
+            <div id="passwordLine">
+                <span class="unselectable"
+                      style="position: relative; margin-left: 10px;">
+                    Password:
+                </span>
+                <span style="position: relative; margin-left: 20px;">
+                    <input id="login_password" type="password" size="20" maxlength="50" required="required"/>
+                </span>
+            </div>
+            <div id="buttonLine">
+                <span class="unselectable"
+                      style="text-align: center">
+                    <input id="loginButton" type="button" name="loginButton" value="Login"/>
+                </span>
+            </form>
+            <div id="login_message" style="width: 350px; margin-left: 50px; color: red; font-weight: bold; text-align: center;"></div>
+        </div>
+                
+    </body>
+    <!--<script language="javascript" src="http://code.jquery.com/jquery-latest.js"></script>-->
+    <script language="javascript" src="js/jquery-1.7.0-dev.js"></script>
+    <script language="javascript" src="js/pad.js"></script>
+    <script language="javascript" src="js/hash.js"></script>
+</html>
+

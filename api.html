@@ -1,0 +1,100 @@
+<html>
+<head>
+<title>Pad API</title>
+</head>
+<body>
+
+<h1>Headers</h1>
+
+<h3>X-PAD-SESSION-ID</h3>
+<p>The session ID.  Required for all calls except POST Login.
+</p>
+
+<h3>X-PAD-REQUEST-HASH</h3>
+<p>The request content hash.  Required for all calls except POST Login.
+</p>
+
+
+
+<h1>Action URIs</h1>
+
+<h2>GET</h2>
+
+<h3>/api</h3>
+<p>Returns this file.
+</p>
+
+<h3>/content/</h3>
+<p>Returns all the notes for the user id.  Intended to be used on page load.  See POST Checkpoint below.
+</p>
+
+
+
+
+<h2>POST</h2>
+
+<h3>/login</h3>
+<p>Logs the user into the service.  Accepts a document describing the login -- this document is consumed and not available later via GET.
+</p>
+<p>The login document is a JSON map with the following keys:
+<br/>
+<pre>
+    {
+        "username": username,
+        "password": hashedPassword,
+        "clientKey": clientKey
+    }
+</pre>
+</p>
+
+<h3>/checkpoint</h3>
+<p>Adds or updates notes to the service for the current user.  Accepts a document describing the notes -- this document is consumed and can later be retrieved with GET Content or by path.
+</p>
+<p>The note document is a JSON list of maps with the following keys:
+<br/>
+<pre>
+    [
+        {
+            "top": topPosition,
+            "left": leftPosition,
+            "height": height,
+            "width": width,
+            "id": noteId,
+            "html": noteHtmlContent,
+            "zIndex": noteZindex
+        }
+    ]
+</pre>
+</p>
+
+
+
+
+<h2>DELETE</h2>
+
+<h3>/delete<i>/noteId</i></h3>
+<p>Delete a note.  <i>Should be renamed to /note</i>
+</p>
+
+
+
+
+<h1>Set up</h1>
+
+<ol>
+    <li>Install MySQLdb Python module (binary)</li>
+    <li>Install mod-wsgi in Apache2</li>
+    <li>Unpack Pad, symlink it to /var/www</li>
+    <li>Write db.cfg file in the root for Pad (same directory as index.py).  Contents are:
+    <br/><i>hostname</i>
+    <br/><i>port</i>
+    <br/><i>username</i>
+    <br/><i>password</i>
+    <br/><i>dbName</i>
+    </li>
+    <li>Create a pad.log file with touch.  chmod to 777 or appropriate group write permissions for apache.</li>
+</ol>
+
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Test Hash</title>
+    </head>
+    <body>
+        <h1 id="qunit-header">Hash Template</h1>
+        <h2 id="qunit-banner"></h2>
+        <div id="qunit-testrunner-toolbar"></div>
+        <h2 id="qunit-userAgent"></h2>
+        <ol id="qunit-tests"></ol>
+        <div id="qunit-fixture">test markup, will be hidden</div>
+        <hr/>
+        <div id="output"></div>
+
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+        <script language="javascript" src="http://code.jquery.com/qunit/qunit-git.js"></script>
+        <link rel="stylesheet" type="text/css" media="screen" href="http://code.jquery.com/qunit/qunit-git.css"/>
+        <script text="text/javascript" src="hash.js"></script>
+        <script language="javascript">
+        $(document).ready(function() {
+            
+            module("Hash Tests");
+            
+            test("A simple test", function() {
+                ok( true, "sanity test passed" );
+            });
+            
+            test("Hashing test", function() {
+                var value = 1617;
+                equal(simpleHash("hello", HASH_TABLE_SIZE), value, "Value was not " + value);
+            });
+
+            test("Session key", function() {
+                var username = "chris";
+                var password = "password";
+                var clientKey = "clientKey";
+                var sessionId = "100";
+                var value = "6f5e8ea8cfdc3965be2e4bd2";
+                
+                equal(createSessionKey(username, password, clientKey, sessionId), value, "Value was not " + value);
+            });
+            
+            test("Client key", function() {
+                notEqual(undefined, createClientKey(), "Client key not created");
+            });
+            
+            test("JSON request", function() {
+                var sessionId = "100";
+                var clientKey = 98349023;
+                var sessionKey = 873463899;
+                var jsonBlob = {"param": "value", "param2": "value2"};
+                var requestHash = "c3d0db5fa84620aec51e10e7";
+                
+                var request = createJsonRequest(sessionId, clientKey, sessionKey, jsonBlob);
+                equal(request.sessionId, sessionId);
+                equal(request.requestHash, requestHash)
+                equal(request.request.param, jsonBlob.param);
+            });
+            
+            test("Password hash", function() {
+                var password = "MySecret";
+                var hashValue = "1d90705b4a254b127c0dde5";
+                
+                equal(passwordHash(password), hashValue);
+                
+            })
+            
+            test("Different password hashes", function() {
+                var password1 = "seekrit";
+                var passwordHash1 = "ca53a21c7fbf53ec3663260e";
+                var password2 = "a really long password therefore more secure right?";
+                var passwordHash2 = "9e596e1a4aadb5762aa6ed0d";
+                
+                equal(passwordHash(password1), passwordHash1);
+                equal(passwordHash(password2), passwordHash2);
+            })
+        });
+        </script>
+    </body>
+</html>
+        
